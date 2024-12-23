@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">GroupAssessmentProject</string>
+    <string name="enter_user_name">Enter user name</string>
+    <string name="enter_password">Enter password</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_in">Sign In</string>
+    <string name="bkgimage">bkgimage</string>
+    <string name="fitness_app">FITNESS APP</string>
+</resources>

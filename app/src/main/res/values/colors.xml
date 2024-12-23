@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="textColor">#111111</color>
+    <color name="hintColor">#BCBCBC</color>
+    <color name="lightBlueBackground">#536CA4</color>
+    <color name="blueBackground">#3B508A</color>
+    <color name="darkBlueBackground">#2F4685</color>
+    <color name="buttonBackground">#1B386D</color>
+    <color name="textBackgroundSelected">#33494949</color>
+    <color name="correctAnswerBtn">#8000FF00</color>
+    <color name="incorrectAnswerBtn">#80FF0000</color>
+</resources>
