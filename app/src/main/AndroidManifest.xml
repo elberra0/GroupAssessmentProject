@@ -13,7 +13,7 @@
         android:theme="@style/Theme.GroupAssessmentProject"
         tools:targetApi="31">
         <activity
-            android:name=".LoginRegisterActivity"
+            android:name=".LoginSignInActivity"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"

@@ -6,7 +6,7 @@
     android:background="@color/darkBlueBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginRegisterActivity">
+    tools:context=".LoginSignInActivity">
 
     <ImageButton
         android:id="@+id/ivBackground"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.45"
         app:srcCompat="@drawable/icon_background"
-        tools:ignore="PrivateResource" />
+        tools:ignore="PrivateResource,ImageContrastCheck" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -43,7 +43,28 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etLoginUser"
-        app:layout_constraintVertical_bias="0.381"
+        app:layout_constraintVertical_bias="0.169"
+        tools:ignore="LabelFor,TextFields" />
+
+    <EditText
+        android:id="@+id/etConfirmPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:background="@drawable/input_text_style"
+        android:ems="10"
+        android:hint="@string/confirm_password"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/hintColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etLoginUser"
+        app:layout_constraintVertical_bias="0.453"
         tools:ignore="LabelFor,TextFields" />
 
     <EditText

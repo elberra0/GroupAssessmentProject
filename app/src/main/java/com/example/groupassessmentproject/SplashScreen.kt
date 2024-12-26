@@ -18,7 +18,7 @@ class SplashScreen : AppCompatActivity(){
 
         screenSplash.setKeepOnScreenCondition{true}
 
-        val intent = Intent(this,LoginRegisterActivity::class.java)
+        val intent = Intent(this,LoginSignInActivity::class.java)
         startActivity(intent)
         finish()
     }

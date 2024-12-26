@@ -6,4 +6,7 @@
     <string name="sign_in">Sign In</string>
     <string name="bkgimage">bkgimage</string>
     <string name="fitness_app">FITNESS APP</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="confirm_password">Confirm password</string>
 </resources>
