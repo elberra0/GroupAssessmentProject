@@ -27,6 +27,7 @@ class LogInFragment : Fragment() {
             if(SharedPreferences_(requireActivity()).checkUserExists(view.etLoginUser.text.toString())){
                 if(SharedPreferences_(requireActivity()).getPassword(view.etLoginUser.text.toString())
                     == view.etPassword.text.toString()){
+
                     view.tvAlertMessage.text = "INICIANDO SESION JEJE GOD"
                 }else{
                     view.etPassword.text.clear()
@@ -37,6 +38,10 @@ class LogInFragment : Fragment() {
                 view.tvAlertMessage.text = "USUARIO NO ENCONTRADO NECESITAS REGISTRARTE"
             }
         }
+    }
+
+    private fun logInChangeFragment(){
+        //TODO: GO DIRECTLY TO EDIT DATA FRAGMENT BECAUSE WE DONT HAVE ANYTHING ELSE YET
     }
 
     private fun loadSignInFragment(view: FragmentLogInBinding){
