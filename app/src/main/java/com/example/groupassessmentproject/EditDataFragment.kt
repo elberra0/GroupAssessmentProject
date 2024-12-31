@@ -18,7 +18,7 @@ class EditDataFragment : Fragment() {
 
             if(view.etEditPassword.text != null ||
                 view.etConfirmEditPassword.text != null){
-                editPassword()
+                editPassword(view)
             }
         }
         return view.root
@@ -33,8 +33,17 @@ class EditDataFragment : Fragment() {
         }
     }
 
-    private fun editPassword(){
-
+    private fun editPassword(view: FragmentEditDataBinding){
+        if(view.etEditPassword.text.toString() == view.etConfirmEditPassword.text.toString()){
+            if(SharedPreferences_(requireActivity()).changePassword(view.etEditPassword.text.toString(),
+                    arguments?.getString("username")!!)){
+                SharedPreferences_(requireActivity()).saveCredentials(arguments?.getString("username")!!,
+                    view.etEditPassword.text.toString() )
+                view.tvAlertMessage.text = "CONTRASEÑA CAMBIADA CORRECTAMENTE"
+            }
+        }else{
+            view.tvAlertMessage.text = "LAS CONTRASEÑAS NO COINCIDEN"
+        }
     }
 
 }

@@ -6,8 +6,6 @@ import android.widget.ImageView
 import android.widget.TextView
 
 class Utils {
-    //docker run -p 8080:8080 anselm82/music-service
-
     fun fadeInImageViewAnimationCustom(image: ImageView, duration:Long, alpha:Float){
         image.alpha = 0f
         image.animate().alpha(alpha).setDuration(duration)
