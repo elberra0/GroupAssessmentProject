@@ -12,13 +12,25 @@ class EditDataFragment : Fragment() {
     {
         val view = FragmentEditDataBinding.inflate(inflater, container, false)
         view.btnSaveData.setOnClickListener{
+            if(arguments?.getString("username") != null){
+                editUserName(view)
+            }
 
+            if(view.etEditPassword.text != null ||
+                view.etConfirmEditPassword.text != null){
+                editPassword()
+            }
         }
         return view.root
     }
 
-    private fun editUserName(){
-
+    private fun editUserName(view:FragmentEditDataBinding){
+        if(SharedPreferences_(requireActivity()).
+            changeUserName(arguments?.getString("username").toString(),view.etEditUsername.text.toString(),)){
+            view.tvAlertMessage.text = "USUARIO CAMBIADO CORRECTAMENTE"
+        }else{
+            view.tvAlertMessage.text = "HA HABIDO UN PROBLEMA AL CAMBIAR EL NOMBRE"
+        }
     }
 
     private fun editPassword(){

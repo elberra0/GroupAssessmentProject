@@ -28,7 +28,30 @@ class LogInFragment : Fragment() {
                 if(SharedPreferences_(requireActivity()).getPassword(view.etLoginUser.text.toString())
                     == view.etPassword.text.toString()){
 
-                    view.tvAlertMessage.text = "INICIANDO SESION JEJE GOD"
+                    val editDataFragment = EditDataFragment()
+                    val fragmentManager = requireActivity().supportFragmentManager
+                    val fragmentLogIn = this
+                    val bundle = Bundle()
+                    bundle.putString("username", view.etLoginUser.text.toString())
+                    editDataFragment.arguments = bundle
+
+                    val animation: Animation = android.view.animation.AnimationUtils.loadAnimation(context, R.anim.scale_down_anim)
+
+                    view.main.startAnimation(animation)
+
+                    animation.setAnimationListener(object : AnimationListener {
+                        override fun onAnimationStart(a: Animation) {
+                            fadeOutAnimations(view)
+                        }
+                        override fun onAnimationRepeat(a: Animation) {}
+                        override fun onAnimationEnd(a: Animation) {
+                            fragmentManager.beginTransaction()
+                                .hide(fragmentLogIn)
+                                .replace(R.id.fragment_sign_in, editDataFragment)
+                                .commit()
+                        }
+                    })
+
                 }else{
                     view.etPassword.text.clear()
                     view.tvAlertMessage.text = "CONTRASEÑA INCORRECTA"

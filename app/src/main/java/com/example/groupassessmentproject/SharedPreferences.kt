@@ -29,6 +29,26 @@ class SharedPreferences_(context: Context) {
         return sharedPreferences.contains(username)
     }
 
+    fun changeUserName(currentUserName:String, newUserName:String):Boolean{
+        if(checkUserExists(currentUserName)){
+            val password = getPassword(currentUserName)!!
+
+            saveCredentials(newUserName,password)
+            deleteUser(currentUserName)
+
+            return true
+        }
+        return false
+    }
+
+    fun changePassword(userName:String, newPassword:String):Boolean{
+        if(newPassword != getPassword(userName)) {
+            saveCredentials(userName, newPassword)
+            return true
+        }
+        return false
+    }
+
     fun deleteUser(username: String) {
         sharedPreferences.edit().remove(username).apply()
     }
