@@ -37,68 +37,96 @@
         app:srcCompat="@drawable/icon_background"
         tools:ignore="PrivateResource,ImageContrastCheck" />
 
-    <EditText
-        android:id="@+id/etEditPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:background="@drawable/input_text_style"
-        android:ems="10"
-        android:hint="@string/enter_new_password"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textColorHint="@color/hintColor"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEditUsername"
-        app:layout_constraintVertical_bias="0.169"
-        tools:ignore="LabelFor,TextFields" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/etConfirmEditPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:background="@drawable/input_text_style"
-        android:ems="10"
-        android:hint="@string/confirem_new_password"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textColorHint="@color/hintColor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEditUsername"
-        app:layout_constraintVertical_bias="0.32"
-        tools:ignore="LabelFor,TextFields" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
 
-    <EditText
-        android:id="@+id/etEditUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:background="@drawable/input_text_style"
-        android:ems="10"
-        android:hint="@string/edit_username"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textColorHint="@color/hintColor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.326"
-        tools:ignore="LabelFor,TextContrastCheck" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="50dp">
+
+                <EditText
+                    android:id="@+id/etEditPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@drawable/input_text_style"
+                    android:ems="10"
+                    android:hint="@string/enter_new_password"
+                    android:inputType="textPassword"
+                    android:minHeight="48dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/hintColor"
+                    android:layout_marginBottom="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etEditUsername"
+                    app:layout_constraintVertical_bias="0.169"
+                    tools:ignore="LabelFor,TextFields" />
+
+                <EditText
+                    android:id="@+id/etConfirmEditPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@drawable/input_text_style"
+                    android:ems="10"
+                    android:hint="@string/confirem_new_password"
+                    android:inputType="textPassword"
+                    android:minHeight="48dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/hintColor"
+                    android:layout_marginBottom="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etEditUsername"
+                    app:layout_constraintVertical_bias="0.32"
+                    tools:ignore="LabelFor,TextFields" />
+
+                <EditText
+                    android:id="@+id/etEditUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@drawable/input_text_style"
+                    android:ems="10"
+                    android:hint="@string/edit_username"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/hintColor"
+                    android:layout_marginBottom="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.326"
+                    tools:ignore="LabelFor,TextContrastCheck" />
+
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+
 
     <Button
         android:id="@+id/btnSaveData"
