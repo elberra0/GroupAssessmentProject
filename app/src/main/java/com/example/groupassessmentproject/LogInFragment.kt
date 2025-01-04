@@ -28,7 +28,7 @@ class LogInFragment : Fragment() {
                 if(SharedPreferences_(requireActivity()).getPassword(view.etLoginUser.text.toString())
                     == view.etPassword.text.toString()){
 
-                    val editDataFragment = EditDataFragment()
+                    val editDataFragment = MapGymFragment()
                     val fragmentManager = requireActivity().supportFragmentManager
                     val fragmentLogIn = this
                     val bundle = Bundle()
