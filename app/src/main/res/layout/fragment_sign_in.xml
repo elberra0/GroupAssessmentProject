@@ -89,7 +89,7 @@
         tools:ignore="LabelFor,TextContrastCheck" />
 
     <Button
-        android:id="@+id/btnLogIn"
+        android:id="@+id/btnFormTest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button_style"
@@ -103,7 +103,7 @@
         app:layout_constraintVertical_bias="0.796" />
 
     <Button
-        android:id="@+id/btnSignIn"
+        android:id="@+id/btnSeePlanning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button_style"
@@ -137,7 +137,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogIn"
+        app:layout_constraintTop_toBottomOf="@+id/btnFormTest"
         app:layout_constraintVertical_bias="0.408" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
