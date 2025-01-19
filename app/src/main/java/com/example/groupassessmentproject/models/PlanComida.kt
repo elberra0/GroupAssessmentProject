@@ -1,16 +1,18 @@
 package com.example.groupassessmentproject.models
-import com.fasterxml.jackson.annotation.JsonProperty
+
+import com.google.gson.annotations.SerializedName
+
 data class PlanComida(
-    @JsonProperty("desayuno")
+    @SerializedName("desayuno")
     val Desayuno: Almuerzo,
-    @JsonProperty("merienda_pre_entrenamiento")
+    @SerializedName("merienda_pre_entrenamiento")
     val MeriendaPreEntrenamiento: Almuerzo,
-    @JsonProperty("almuerzo_post_entrenamiento")
+    @SerializedName("almuerzo_post_entrenamiento")
     val AlmuerzoPostEntrenamiento: Almuerzo,
-    @JsonProperty("merienda_tarde")
+    @SerializedName("merienda_tarde")
     val MeriendaTarde: Almuerzo,
-    @JsonProperty("cena")
+    @SerializedName("cena")
     val Cena: Almuerzo,
-    @JsonProperty("snack_nocturno")
+    @SerializedName("snack_nocturno")
     val SnackNocturno: Almuerzo
 )

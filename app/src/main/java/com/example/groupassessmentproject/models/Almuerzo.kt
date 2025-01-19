@@ -1,7 +1,7 @@
 package com.example.groupassessmentproject.models
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.google.gson.annotations.SerializedName
 
 class Almuerzo(
-    @JsonProperty("alimentos")
+    @SerializedName("alimentos")
     var alimentos: List<String>
 )

@@ -1,12 +1,12 @@
 package com.example.groupassessmentproject.models
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.google.gson.annotations.SerializedName
 
 data class Ejercicios(
-    @JsonProperty("lunes") val Lunes: DiaSemanaBase,
-    @JsonProperty("martes") val Martes: DiaSemanaBase,
-    @JsonProperty("miercoles") val Miercoles: DiaSemanaBase,
-    @JsonProperty("jueves") val Jueves: DiaSemanaBase,
-    @JsonProperty("viernes") val Viernes: DiaSemanaBase,
-    @JsonProperty("sabado") val Sabado: DiaSemanaBase,
-    @JsonProperty("domingo") val Domingo: DiaSemanaBase
+    @SerializedName("lunes") val Lunes: DiaSemanaBase,
+    @SerializedName("martes") val Martes: DiaSemanaBase,
+    @SerializedName("miercoles") val Miercoles: DiaSemanaBase,
+    @SerializedName("jueves") val Jueves: DiaSemanaBase,
+    @SerializedName("viernes") val Viernes: DiaSemanaBase,
+    @SerializedName("sabado") val Sabado: DiaSemanaBase,
+    @SerializedName("domingo") val Domingo: DiaSemanaBase
 )

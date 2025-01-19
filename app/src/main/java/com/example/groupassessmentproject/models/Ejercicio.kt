@@ -1,12 +1,14 @@
 package com.example.groupassessmentproject.models
-import com.fasterxml.jackson.annotation.JsonProperty
+
+import com.google.gson.annotations.SerializedName
+
 data class Ejercicio(
-    @JsonProperty("nombre")
+    @SerializedName("nombre")
     var nombre: String? = null,
-    @JsonProperty("series")
+    @SerializedName("series")
     var series: Long? = null,
-    @JsonProperty("repeticiones")
+    @SerializedName("repeticiones")
     var repeticiones: String? = null,
-    @JsonProperty("descripcion")
+    @SerializedName("descripcion")
     var descripcion: String? = null
 )

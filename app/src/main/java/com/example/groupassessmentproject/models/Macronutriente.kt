@@ -1,10 +1,12 @@
 package com.example.groupassessmentproject.models
-import com.fasterxml.jackson.annotation.JsonProperty
+
+import com.google.gson.annotations.SerializedName
+
 data class Macronutriente(
-    @JsonProperty("carbohidratos")
+    @SerializedName("carbohidratos")
     val Carbohidratos: String,
-    @JsonProperty("proteinas")
+    @SerializedName("proteinas")
     val Proteinas: String,
-    @JsonProperty("grasas")
+    @SerializedName("grasas")
     val Grasas: String
 )

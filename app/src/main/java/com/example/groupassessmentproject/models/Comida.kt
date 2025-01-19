@@ -1,8 +1,10 @@
 package com.example.groupassessmentproject.models
-import com.fasterxml.jackson.annotation.JsonProperty
+
+import com.google.gson.annotations.SerializedName
+
 data class Comida(
-    @JsonProperty("pre_post_entrenamiento")
+    @SerializedName("pre_post_entrenamiento")
     val prePostEntrenamiento: String,
-    @JsonProperty("hidratacion")
+    @SerializedName("hidratacion")
     val hidratacion: String
 )

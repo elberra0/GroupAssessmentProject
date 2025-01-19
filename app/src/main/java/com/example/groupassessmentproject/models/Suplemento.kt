@@ -1,13 +1,14 @@
 package com.example.groupassessmentproject.models
-import com.fasterxml.jackson.annotation.JsonProperty
+
+import com.google.gson.annotations.SerializedName
 
 data class Suplemento(
-    @JsonProperty("proteina_de_suero")
+    @SerializedName("proteina_de_suero")
     val proteinaDeSuero: String,
-    @JsonProperty("creatina_monomhidratada")
+    @SerializedName("creatina_monomhidratada")
     val creatinaMonomhidratada: String,
-    @JsonProperty("bcaas")
+    @SerializedName("bcaas")
     val bcaas: String,
-    @JsonProperty("multivitaminico")
+    @SerializedName("multivitaminico")
     val multivitaminico: String
 )

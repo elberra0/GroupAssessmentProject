@@ -1,15 +1,16 @@
 package com.example.groupassessmentproject.models
-import com.fasterxml.jackson.annotation.JsonProperty
+
+import com.google.gson.annotations.SerializedName
 
 data class Plan(
-    @JsonProperty("id")
+    @SerializedName("id")
     val id: Int,
-    @JsonProperty("clasificacionid")
+    @SerializedName("clasificacionid")
     val clasificacionId: Int,
-    @JsonProperty("ejercicios")
+    @SerializedName("ejercicios")
     val ejercicios: Ejercicios,
-    @JsonProperty("consejos")
+    @SerializedName("consejos")
     val consejos: List<String>,
-    @JsonProperty("nutricion")
+    @SerializedName("nutricion")
     val nutricion: Nutricion
 )

@@ -1,11 +1,10 @@
 package com.example.groupassessmentproject.models
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.google.gson.annotations.SerializedName
 
 data class Clasificacion(
-    @JsonProperty("id") val id: Int,
-    @JsonProperty("puntajeminimo") val puntajeMinimo: Int,
-    @JsonProperty("puntajemaximo") val puntajeMaximo: Int,
-    @JsonProperty("descripcion") val descripcion: String,
-    @JsonProperty("nombre") val nombre: String
-
+    @SerializedName("id") val id: Int,
+    @SerializedName("puntajeminimo") val puntajeMinimo: Int,
+    @SerializedName("puntajemaximo") val puntajeMaximo: Int,
+    @SerializedName("descripcion") val descripcion: String,
+    @SerializedName("nombre") val nombre: String
 )

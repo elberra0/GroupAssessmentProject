@@ -58,8 +58,10 @@ dependencies {
     implementation("com.google.code.gson:gson:2.8.2")
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("androidx.security:security-crypto-ktx:1.1.0-alpha06")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.0")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.15.0")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

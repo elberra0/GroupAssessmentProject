@@ -1,13 +1,13 @@
 package com.example.groupassessmentproject.models
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.google.gson.annotations.SerializedName
 
 data class DiaSemanaBase(
-    @JsonProperty("tipo")
+    @SerializedName("tipo")
     val Tipo: String,
-    @JsonProperty("calentamiento")
+    @SerializedName("calentamiento")
     val Calentamiento: String?,
-    @JsonProperty("ejercicios")
+    @SerializedName("ejercicios")
     val Ejercicios: List<Ejercicio>,
-    @JsonProperty("enfriamiento")
+    @SerializedName("enfriamiento")
     val Enfriamiento: String?
 )

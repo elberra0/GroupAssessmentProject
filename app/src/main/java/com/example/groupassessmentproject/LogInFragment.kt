@@ -8,10 +8,13 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.Animation.AnimationListener
 import com.example.groupassessmentproject.databinding.FragmentLogInBinding
+import com.example.groupassessmentproject.services.PersistenceService
+import kotlinx.coroutines.*
 
 class LogInFragment : Fragment() {
     private val ANIMATIONTIME:Long = 200
     private val utils = Utils()
+    private val api = PersistenceService
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
     {
@@ -24,6 +27,12 @@ class LogInFragment : Fragment() {
 
     private fun logIn(view: FragmentLogInBinding){
         view.btnLogIn.setOnClickListener{
+
+            val scope = CoroutineScope(Dispatchers.Main)
+            scope.launch {
+                api.shared.load()
+            }
+
             if(SharedPreferences_(requireActivity()).checkUserExists(view.etLoginUser.text.toString())){
                 if(SharedPreferences_(requireActivity()).getPassword(view.etLoginUser.text.toString())
                     == view.etPassword.text.toString()){
