@@ -23,7 +23,7 @@ class SignInFragment : Fragment() {
     }
 
     private fun loadLogInFragment(view: FragmentSignInBinding){
-        view.btnLogIn.setOnClickListener{
+        view.btnFormTest.setOnClickListener{
             val signInFragment = this
             val fragmentManager = requireActivity().supportFragmentManager
             val fragmentLogIn = LogInFragment()
@@ -48,7 +48,7 @@ class SignInFragment : Fragment() {
     }
 
     private fun signIn(view: FragmentSignInBinding){
-        view.btnSignIn.setOnClickListener{
+        view.btnSeePlanning.setOnClickListener{
             if(SharedPreferences_(requireActivity()).checkUserExists(view.etLoginUser.text.toString())){
                 view.tvAlertMessage.text = "USUARIO YA EXISTENTE EN LA BASE DE DATOS"
             }else{
@@ -65,8 +65,8 @@ class SignInFragment : Fragment() {
     }
 
     private fun fadeOutAnimations(view: FragmentSignInBinding){
-        utils.fadeOutButtonViewAnimationCustom(view.btnLogIn,ANIMATION_TIME)
-        utils.fadeOutButtonViewAnimationCustom(view.btnSignIn,ANIMATION_TIME)
+        utils.fadeOutButtonViewAnimationCustom(view.btnFormTest,ANIMATION_TIME)
+        utils.fadeOutButtonViewAnimationCustom(view.btnSeePlanning,ANIMATION_TIME)
         utils.fadeOutEditTextAnimationCustom(view.etLoginUser,ANIMATION_TIME)
         utils.fadeOutEditTextAnimationCustom(view.etPassword,ANIMATION_TIME)
         utils.fadeOutEditTextAnimationCustom(view.etConfirmPassword,ANIMATION_TIME)
@@ -78,13 +78,13 @@ class SignInFragment : Fragment() {
         view.etLoginUser.alpha = 0f
         view.etPassword.alpha = 0f
         view.etConfirmPassword.alpha = 0f
-        view.btnLogIn.alpha = 0f
-        view.btnSignIn.alpha = 0f
+        view.btnFormTest.alpha = 0f
+        view.btnSeePlanning.alpha = 0f
         view.ivBackground.alpha = 0f
         view.tvAppName.alpha = 0f
 
-        utils.fadeInButtonViewAnimationCustom(view.btnLogIn,ANIMATION_TIME,1f)
-        utils.fadeInButtonViewAnimationCustom(view.btnSignIn,ANIMATION_TIME,1f)
+        utils.fadeInButtonViewAnimationCustom(view.btnFormTest,ANIMATION_TIME,1f)
+        utils.fadeInButtonViewAnimationCustom(view.btnSeePlanning,ANIMATION_TIME,1f)
         utils.fadeInEditTextAnimationCustom(view.etLoginUser,ANIMATION_TIME,1f)
         utils.fadeInEditTextAnimationCustom(view.etPassword,ANIMATION_TIME,1f)
         utils.fadeInEditTextAnimationCustom(view.etConfirmPassword,ANIMATION_TIME,1f)

@@ -3,6 +3,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface ApiService {
-    @GET("appData")
+    @GET("AppData")
     fun getData(): Call<DataApp>
 }
