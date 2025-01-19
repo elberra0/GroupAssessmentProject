@@ -7,32 +7,20 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class PersistenceService  private constructor() {
+class PersistenceService
+private constructor() {
 
     companion object {
         val shared by lazy { PersistenceService() }
     }
 
-    fun load() {
-        //dataApp.clear()
-        //dataApp.addAll(getAll())
-        getAll()
+    fun load(): DataApp {
+      return  getAll()
     }
 
-    private fun getAll() {
+    private fun getAll():DataApp {
+        var result: DataApp = DataApp()
 
-        RetrofitInstance.apiService.getData().enqueue(object : Callback<DataApp> {
-            override fun onResponse(call: Call<DataApp>, response: Response<DataApp>) {
-                if (response.isSuccessful) {
-                    var getResult =  response.body()
-
-                }
-            }
-
-            override fun onFailure(call: Call<DataApp>, t: Throwable) {
-                Log.e("MainActivity", "Failure: ${t.message}")
-            }
-        })
-
+        return  result
     }
 }
