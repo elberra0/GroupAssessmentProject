@@ -1,5 +1,6 @@
 package com.example.groupassessmentproject
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -37,7 +38,7 @@ class LogInFragment : Fragment() {
                 if(SharedPreferences_(requireActivity()).getPassword(view.etLoginUser.text.toString())
                     == view.etPassword.text.toString()){
 
-                    val editDataFragment = MapGymFragment()
+                    val editDataFragment = FormFragment()
                     val fragmentManager = requireActivity().supportFragmentManager
                     val fragmentLogIn = this
                     val bundle = Bundle()
@@ -54,10 +55,12 @@ class LogInFragment : Fragment() {
                         }
                         override fun onAnimationRepeat(a: Animation) {}
                         override fun onAnimationEnd(a: Animation) {
-                            fragmentManager.beginTransaction()
+                            /*fragmentManager.beginTransaction()
                                 .hide(fragmentLogIn)
                                 .replace(R.id.fragment_sign_in, editDataFragment)
-                                .commit()
+                                .commit()*/
+                            val intent = Intent(requireActivity(), MainActivity::class.java)
+                            startActivity(intent)
                         }
                     })
 
