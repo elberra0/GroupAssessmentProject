@@ -10,6 +10,7 @@ import android.widget.LinearLayout.LayoutParams
 import android.widget.ImageView
 import android.graphics.Color
 import android.util.Log
+import com.example.groupassessmentproject.data.local.AppDataSharedPreferences
 import com.example.groupassessmentproject.models.Plan
 import com.example.groupassessmentproject.models.remote.WorkoutPlan
 import com.example.groupassessmentproject.services.RetrofitInstance
@@ -21,16 +22,17 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import kotlinx.coroutines.*
 
-class WorkoutPlanActivity : AppCompatActivity() {
-
+class WorkoutPlanActivity() : AppCompatActivity(){
+    private val _appDataSharedPreferences = AppDataSharedPreferences()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_workout_plan)
 
         var workoutPlan: WorkoutPlan? = null
-
+        val planId = _appDataSharedPreferences.getPlan(this)
         runBlocking {
-            workoutPlan = RetrofitInstance.apiService.getPlanById(3)
+
+            workoutPlan = RetrofitInstance.apiService.getPlanById(planId)
 
             /*
             RetrofitInstance.apiService.getPlanById(1).enqueue(object : Callback<WorkoutPlan> {

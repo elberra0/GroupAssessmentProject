@@ -51,7 +51,7 @@
         android:contentDescription="Campo de altura" />
 
     <Spinner
-        android:id="@+id/exercisePlanSpinner"
+        android:id="@+id/SpinnerObjetivo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:importantForAccessibility="yes"
@@ -64,5 +64,4 @@
         android:text="Enviar"
         android:layout_gravity="end"
         android:onClick="onSubmitClick"/>
-
 </LinearLayout>

@@ -4,11 +4,13 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.groupassessmentproject.data.local.AppDataSharedPreferences
 
 class InfoActivity : AppCompatActivity() {
 
+    private val _appDataSharedPreferences = AppDataSharedPreferences()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
@@ -21,40 +23,93 @@ class InfoActivity : AppCompatActivity() {
         val adaptersexosItems = ArrayAdapter(this, android.R.layout.simple_spinner_item, sexosItems)
         adaptersexosItems.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
+        val plaesItems = resources.getStringArray(R.array.Planes)
+        val adapterplaesItems = ArrayAdapter(this, android.R.layout.simple_spinner_item, plaesItems)
+        adapterplaesItems.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
         val ageEditText: EditText = findViewById(R.id.ageEditText)
         val sexSpinner: Spinner = findViewById(R.id.sexSpinner)
         val weightEditText: EditText = findViewById(R.id.weightEditText)
         val heightEditText: EditText = findViewById(R.id.heightEditText)
-        val exercisePlanSpinner: Spinner = findViewById(R.id.exercisePlanSpinner)
+        val spinnerObjetivo: Spinner = findViewById(R.id.SpinnerObjetivo)
         val submitButton: Button = findViewById(R.id.submitButton)
 
-        exercisePlanSpinner.adapter = adapterObjetivos
+        spinnerObjetivo.adapter = adapterObjetivos
         sexSpinner.adapter = adaptersexosItems
-
 
         submitButton.setOnClickListener {
             var puntos: Int = 0
+            var errorMsg = StringBuilder()
+            if(ageEditText.text.isNullOrBlank())
+            {
+                errorMsg.appendLine("Debe espeficicar su edad.")
+            }
+
+            if(weightEditText.text.isNullOrBlank())
+            {
+                errorMsg.appendLine("Debe espeficicar su peso.")
+
+            }
+
+            if(heightEditText.text.isNullOrBlank())
+            {
+                errorMsg.appendLine("Debe espeficicar su altura.")
+            }
+
+            if(!(errorMsg.toString().isNullOrBlank())) {
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Valicaciones faltantes")
+                    .setMessage(errorMsg.toString())
+                    .setPositiveButton("Sí") { dialog, which ->
+                    }
+
+                val dialog = builder.create()
+                dialog.show()
+
+                return@setOnClickListener
+            }
 
             val age =   ageEditText.text.toString().toInt()
             val sex = sexSpinner.selectedItem.toString()
             val weight = weightEditText.text.toString().toDouble()
             val height = heightEditText.text.toString().toDouble()
-            val objetivo = exercisePlanSpinner.selectedItem.toString()
+            val objetivo = spinnerObjetivo.selectedItem.toString()
 
             puntos = evaluarPuntos(age,sex,weight,height,objetivo)
 
-            Toast.makeText(this, "total de puntos: $puntos", Toast.LENGTH_LONG).show()
+            var planEvaluado = ""
+            when (puntos) {
+                in 0..7 -> planEvaluado = "Recomendación de mantenimiento o impacto bajo"
+                in 8..11 -> planEvaluado = "Recomendación equilibrada"
+                in 12..99 -> planEvaluado = "Recomendación de alto rendimiento"
+            }
+
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Se le recomienda el siguiente Plan")
+                .setMessage(planEvaluado)
+                .setPositiveButton("Sí") { dialog, which ->
+                    var planId: Int = 0
+
+                    when (puntos) {
+                        in 0..7 -> planId = 3
+                        in 8..11 -> planId = 2
+                        in 12..99 -> planId = 1
+                    }
+                    _appDataSharedPreferences.savePlan(applicationContext ,planId)
+                    finish()
+                }
+                .setNegativeButton("No") { dialog, which ->
+
+                }
+
+            val dialog = builder.create()
+            dialog.show()
         }
     }
 }
 
-private fun evaluarPuntos(
-    age: Int,
-    sex: String,
-    weight: Double,
-    height: Double,
-    objetivo: String
-): Int {
+private fun evaluarPuntos(age: Int, sex: String,weight: Double,height: Double,objetivo: String): Int {
+
     var puntosPuntos = 0
 
     when (age) {
