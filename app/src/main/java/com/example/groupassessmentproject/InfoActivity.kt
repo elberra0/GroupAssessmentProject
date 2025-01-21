@@ -7,10 +7,15 @@ import android.widget.Spinner
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.groupassessmentproject.data.local.AppDataSharedPreferences
+import com.example.groupassessmentproject.models.remote.WorkoutPlan
+import com.example.groupassessmentproject.services.RetrofitInstance
+import com.google.gson.Gson
+import kotlinx.coroutines.runBlocking
 
 class InfoActivity : AppCompatActivity() {
 
     private val _appDataSharedPreferences = AppDataSharedPreferences()
+    private val gson = Gson()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
@@ -95,7 +100,16 @@ class InfoActivity : AppCompatActivity() {
                         in 8..11 -> planId = 2
                         in 12..99 -> planId = 1
                     }
-                    _appDataSharedPreferences.savePlan(applicationContext ,planId)
+                    _appDataSharedPreferences.savePlan(applicationContext, planId)
+                    var workoutPlan: WorkoutPlan? = null
+
+                    runBlocking {
+                        workoutPlan = RetrofitInstance.apiService.getPlanById(planId)
+                    }
+
+                    var remoteJson = gson.toJson(workoutPlan)
+                    _appDataSharedPreferences.saveJson(this, remoteJson)
+
                     finish()
                 }
                 .setNegativeButton("No") { dialog, which ->

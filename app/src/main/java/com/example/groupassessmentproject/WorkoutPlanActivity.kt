@@ -21,33 +21,19 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import kotlinx.coroutines.*
+import kotlin.reflect.typeOf
 
-class WorkoutPlanActivity() : AppCompatActivity(){
+class WorkoutPlanActivity() : AppCompatActivity() {
     private val _appDataSharedPreferences = AppDataSharedPreferences()
+    private val gson = Gson()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_workout_plan)
 
         var workoutPlan: WorkoutPlan? = null
         val planId = _appDataSharedPreferences.getPlan(this)
-        runBlocking {
-
-            workoutPlan = RetrofitInstance.apiService.getPlanById(planId)
-
-            /*
-            RetrofitInstance.apiService.getPlanById(1).enqueue(object : Callback<WorkoutPlan> {
-                override fun onResponse(call: Call<WorkoutPlan>, response: Response<WorkoutPlan>) {
-                    if (response.isSuccessful) {
-                        workoutPlan = response.body()!!
-                    }
-                }
-
-                override fun onFailure(call: Call<WorkoutPlan>, t: Throwable) {
-                    Log.e("MainActivity", "Failure: ${t.message}")
-                }
-            })
-            */
-        }
+        var localJson = _appDataSharedPreferences.getJson(this)
+        workoutPlan = gson.fromJson(localJson, WorkoutPlan::class.java)
         val workoutPlanContainer: LinearLayout = findViewById(R.id.workoutPlanContainer)
 
         val titleTextView = TextView(this).apply {
