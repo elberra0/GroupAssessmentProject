@@ -24,13 +24,13 @@
         android:importantForAccessibility="yes"
         android:contentDescription="Campo de edad" />
 
-    <EditText
-        android:id="@+id/sexEditText"
+    <Spinner
+        android:id="@+id/sexSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Sexo"
         android:importantForAccessibility="yes"
-        android:contentDescription="Campo de sexo" />
+        android:hint="Sexo"
+        android:contentDescription="Seleccion de sexo." />
 
     <EditText
         android:id="@+id/weightEditText"
@@ -55,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:importantForAccessibility="yes"
-        android:contentDescription="Selector de plan de ejercicio" />
+        android:contentDescription="Objetivo" />
 
     <Button
         android:id="@+id/submitButton"

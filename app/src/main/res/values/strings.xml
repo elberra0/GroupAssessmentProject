@@ -16,9 +16,14 @@
     <string name="welcome">Welcome</string>
     <string name="title_activity_main_custionario">MainCustionario</string>
 
-    <string-array name="exercise_plans">
-        <item>Recomendación de alto rendimiento</item>
-        <item>Recomendación equilibrada</item>
-        <item>Recomendación de mantenimiento o impacto bajo</item>
+    <string-array name="objetivo">
+        <item>Ganar masa muscular</item>
+        <item>Perder peso</item>
+        <item>Mantener peso</item>
+    </string-array>
+
+    <string-array name="sexosItems">
+        <item>Hombre</item>
+        <item>Mujer</item>
     </string-array>
 </resources>

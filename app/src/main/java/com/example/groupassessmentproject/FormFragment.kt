@@ -7,19 +7,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import com.example.groupassessmentproject.databinding.FragmentFormBinding
 
 class FormFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
     {
         val binding = inflater.inflate(R.layout.fragment_form, container, false)
 
-        val openSecondActivityButton: Button = binding.findViewById(R.id.btnFormTest)
+        val bntFromTest: Button = binding.findViewById(R.id.btnFormTest)
+        val btnSeePlanning: Button = binding.findViewById(R.id.btnSeePlanning)
+        btnSeePlanning.setOnClickListener {
+            val intent = Intent(requireActivity(), WorkoutPlanActivity::class.java)
+            startActivity(intent)
+        }
 
-        openSecondActivityButton.setOnClickListener {
+        bntFromTest.setOnClickListener {
             val intent = Intent(requireActivity(), InfoActivity::class.java)
             startActivity(intent)
         }
+
        return  binding
     }
 }
