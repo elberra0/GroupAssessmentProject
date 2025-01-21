@@ -10,15 +10,8 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.Animation.AnimationListener
 import com.example.groupassessmentproject.databinding.FragmentLogInBinding
-import com.example.groupassessmentproject.models.DataApp
 import com.example.groupassessmentproject.services.PersistenceService
-import com.example.groupassessmentproject.services.RetrofitInstance
-import com.google.android.gms.tasks.Tasks.await
-import kotlinx.coroutines.*
-import okhttp3.internal.wait
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+
 
 class LogInFragment : Fragment() {
     private val ANIMATIONTIME:Long = 200
@@ -35,7 +28,7 @@ class LogInFragment : Fragment() {
     }
 
     private fun logIn(view: FragmentLogInBinding){
-        view.btnFormTest.setOnClickListener{
+        view.btnLogIn.setOnClickListener{
 
            /*
             val scope = CoroutineScope(Dispatchers.Main)
@@ -112,7 +105,7 @@ class LogInFragment : Fragment() {
     }
 
     private fun loadSignInFragment(view: FragmentLogInBinding){
-        view.btnSeePlanning.setOnClickListener{
+        view.btnSignIn.setOnClickListener{
             val signInFragment = SignInFragment()
             val fragmentManager = requireActivity().supportFragmentManager
             val fragmentLogIn = this
@@ -137,8 +130,8 @@ class LogInFragment : Fragment() {
     }
 
     private fun fadeOutAnimations(view:FragmentLogInBinding){
-        utils.fadeOutButtonViewAnimationCustom(view.btnFormTest,ANIMATIONTIME)
-        utils.fadeOutButtonViewAnimationCustom(view.btnSeePlanning,ANIMATIONTIME)
+        utils.fadeOutButtonViewAnimationCustom(view.btnLogIn,ANIMATIONTIME)
+        utils.fadeOutButtonViewAnimationCustom(view.btnSignIn,ANIMATIONTIME)
         utils.fadeOutEditTextAnimationCustom(view.etLoginUser,ANIMATIONTIME)
         utils.fadeOutEditTextAnimationCustom(view.etPassword,ANIMATIONTIME)
         utils.fadeOutImageViewAnimationCustom(view.ivBackground,ANIMATIONTIME)
@@ -148,13 +141,13 @@ class LogInFragment : Fragment() {
     private fun fadeInAnimations(view: FragmentLogInBinding){
         view.etLoginUser.alpha = 0f
         view.etPassword.alpha = 0f
-        view.btnFormTest.alpha = 0f
-        view.btnSeePlanning.alpha = 0f
+        view.btnLogIn.alpha = 0f
+        view.btnSignIn.alpha = 0f
         view.ivBackground.alpha = 0f
         view.tvAppName.alpha = 0f
 
-        utils.fadeInButtonViewAnimationCustom(view.btnFormTest,ANIMATIONTIME,1f)
-        utils.fadeInButtonViewAnimationCustom(view.btnSeePlanning,ANIMATIONTIME,1f)
+        utils.fadeInButtonViewAnimationCustom(view.btnLogIn,ANIMATIONTIME,1f)
+        utils.fadeInButtonViewAnimationCustom(view.btnSignIn,ANIMATIONTIME,1f)
         utils.fadeInEditTextAnimationCustom(view.etLoginUser,ANIMATIONTIME,1f)
         utils.fadeInEditTextAnimationCustom(view.etPassword,ANIMATIONTIME,1f)
         utils.fadeInImageViewAnimationCustom(view.ivBackground,ANIMATIONTIME,1f)
