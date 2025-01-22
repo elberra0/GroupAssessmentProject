@@ -45,7 +45,7 @@
             android:name=".LoginSignInActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".SplashScreenAct"
             android:exported="true"
             android:theme="@style/Theme.App.Starting">
             <intent-filter>

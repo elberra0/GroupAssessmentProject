@@ -6,7 +6,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import android.os.Bundle
 import com.example.groupassessmentproject.databinding.ActivitySplashScreenBinding
 
-class SplashScreen : AppCompatActivity(){
+class SplashScreenAct : AppCompatActivity(){
     private val view by lazy {
         ActivitySplashScreenBinding.inflate(layoutInflater)
     }
