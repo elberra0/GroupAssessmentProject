@@ -150,7 +150,7 @@ class LogInFragment : Fragment() {
         utils.fadeInButtonViewAnimationCustom(view.btnSignIn,ANIMATIONTIME,1f)
         utils.fadeInEditTextAnimationCustom(view.etLoginUser,ANIMATIONTIME,1f)
         utils.fadeInEditTextAnimationCustom(view.etPassword,ANIMATIONTIME,1f)
-        utils.fadeInImageViewAnimationCustom(view.ivBackground,ANIMATIONTIME,1f)
+        utils.fadeInImageViewAnimationCustom(view.ivBackground,ANIMATIONTIME,0.3f)
         utils.fadeInTextViewAnimationCustom(view.tvAppName,ANIMATIONTIME,1f)
     }
 }
