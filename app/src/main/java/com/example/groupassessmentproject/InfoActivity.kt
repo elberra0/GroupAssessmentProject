@@ -7,15 +7,12 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.groupassessmentproject.data.local.AppDataSharedPreferences
-import com.example.groupassessmentproject.helpers.NetworkUtils
 import com.example.groupassessmentproject.models.remote.WorkoutPlan
 import com.example.groupassessmentproject.services.RetrofitInstance
 import com.google.gson.Gson
-import kotlinx.coroutines.Dispatchers
+import com.example.groupassessmentproject.helpers.NetworkUtils
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 
 class InfoActivity : AppCompatActivity() {
 
@@ -48,7 +45,6 @@ class InfoActivity : AppCompatActivity() {
         sexSpinner.adapter = adaptersexosItems
 
         submitButton.setOnClickListener {
-
             if(!(NetworkUtils.isInternetAvailable(this)))
             {
                 val builder = AlertDialog.Builder(this)
@@ -62,7 +58,9 @@ class InfoActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+
             var puntos: Int = 0
+            var apiError = false
             var errorMsg = StringBuilder()
             if(ageEditText.text.isNullOrBlank())
             {
@@ -90,7 +88,7 @@ class InfoActivity : AppCompatActivity() {
                 val dialog = builder.create()
                 dialog.show()
 
-
+                return@setOnClickListener
             }
 
             val age =   ageEditText.text.toString().toInt()
@@ -100,7 +98,7 @@ class InfoActivity : AppCompatActivity() {
             val objetivo = spinnerObjetivo.selectedItem.toString()
 
             puntos = evaluarPuntos(age,sex,weight,height,objetivo)
-            var apiError = false;
+
             var planEvaluado = ""
             when (puntos) {
                 in 0..7 -> planEvaluado = "Recomendación de mantenimiento o impacto bajo"
@@ -121,12 +119,13 @@ class InfoActivity : AppCompatActivity() {
                     }
                     _appDataSharedPreferences.savePlan(applicationContext, planId)
                     var workoutPlan: WorkoutPlan? = null
+
                     runBlocking {
 
                         try {
                             workoutPlan = RetrofitInstance.apiService.getPlanById(planId)
                         } catch (e: Exception) {
-                         apiError = true
+                            apiError = true
 
                         }
                     }
@@ -140,9 +139,9 @@ class InfoActivity : AppCompatActivity() {
                     {
                         Toast.makeText(this, "Algo anda mal con nuestro servidor, favor intentarlo mas tarde.", Toast.LENGTH_LONG).show()
                     }
-
                 }
                 .setNegativeButton("No") { dialog, which ->
+
                 }
 
             val dialog = builder.create()
