@@ -4,13 +4,18 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.groupassessmentproject.data.local.AppDataSharedPreferences
+import com.example.groupassessmentproject.helpers.NetworkUtils
 import com.example.groupassessmentproject.models.remote.WorkoutPlan
 import com.example.groupassessmentproject.services.RetrofitInstance
 import com.google.gson.Gson
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
 class InfoActivity : AppCompatActivity() {
 
@@ -43,6 +48,20 @@ class InfoActivity : AppCompatActivity() {
         sexSpinner.adapter = adaptersexosItems
 
         submitButton.setOnClickListener {
+
+            if(!(NetworkUtils.isInternetAvailable(this)))
+            {
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Error de conectividad")
+                    .setMessage("Actualmente no tienes conexión a Internet. Intenta conectarte a una red Wi-Fi o activar los datos móviles en tu celular.")
+                    .setPositiveButton("Sí") { dialog, which ->
+                    }
+
+                val dialog = builder.create()
+                dialog.show()
+                return@setOnClickListener
+            }
+
             var puntos: Int = 0
             var errorMsg = StringBuilder()
             if(ageEditText.text.isNullOrBlank())
@@ -71,7 +90,7 @@ class InfoActivity : AppCompatActivity() {
                 val dialog = builder.create()
                 dialog.show()
 
-                return@setOnClickListener
+
             }
 
             val age =   ageEditText.text.toString().toInt()
@@ -81,7 +100,7 @@ class InfoActivity : AppCompatActivity() {
             val objetivo = spinnerObjetivo.selectedItem.toString()
 
             puntos = evaluarPuntos(age,sex,weight,height,objetivo)
-
+            var apiError = false;
             var planEvaluado = ""
             when (puntos) {
                 in 0..7 -> planEvaluado = "Recomendación de mantenimiento o impacto bajo"
@@ -102,18 +121,28 @@ class InfoActivity : AppCompatActivity() {
                     }
                     _appDataSharedPreferences.savePlan(applicationContext, planId)
                     var workoutPlan: WorkoutPlan? = null
-
                     runBlocking {
-                        workoutPlan = RetrofitInstance.apiService.getPlanById(planId)
+
+                        try {
+                            workoutPlan = RetrofitInstance.apiService.getPlanById(planId)
+                        } catch (e: Exception) {
+                         apiError = true
+
+                        }
                     }
 
-                    var remoteJson = gson.toJson(workoutPlan)
-                    _appDataSharedPreferences.saveJson(this, remoteJson)
+                    if(!apiError) {
+                        var remoteJson = gson.toJson(workoutPlan)
+                        _appDataSharedPreferences.saveJson(this, remoteJson)
+                        finish()
+                    }
+                    else
+                    {
+                        Toast.makeText(this, "Algo anda mal con nuestro servidor, favor intentarlo mas tarde.", Toast.LENGTH_LONG).show()
+                    }
 
-                    finish()
                 }
                 .setNegativeButton("No") { dialog, which ->
-
                 }
 
             val dialog = builder.create()
