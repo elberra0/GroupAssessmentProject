@@ -12,10 +12,10 @@ class NavigationBarFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
     {
         val view = FragmentNavigationBarBinding.inflate(inflater, container, false)
+        val fragmentManager = requireActivity().supportFragmentManager
 
         view.btnHome.setOnClickListener{
             val homeFragment = FormFragment()
-            val fragmentManager = requireActivity().supportFragmentManager
 
             fragmentManager.beginTransaction()
                 .replace(R.id.main_view_fragment, homeFragment)
@@ -24,7 +24,6 @@ class NavigationBarFragment : Fragment() {
 
         view.btnOptions.setOnClickListener{
             val editDataFragment = EditDataFragment()
-            val fragmentManager = requireActivity().supportFragmentManager
 
             fragmentManager.beginTransaction()
             .replace(R.id.main_view_fragment, editDataFragment)
@@ -33,7 +32,6 @@ class NavigationBarFragment : Fragment() {
 
         view.btnMap.setOnClickListener{
             val mapFragment = MapGymFragment()
-            val fragmentManager = requireActivity().supportFragmentManager
 
             fragmentManager.beginTransaction()
                 .replace(R.id.main_view_fragment, mapFragment)

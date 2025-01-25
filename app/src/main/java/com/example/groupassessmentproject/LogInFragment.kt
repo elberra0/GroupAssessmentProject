@@ -83,6 +83,7 @@ class LogInFragment : Fragment() {
                                 .replace(R.id.fragment_sign_in, editDataFragment)
                                 .commit()*/
                             val intent = Intent(requireActivity(), MainActivity::class.java)
+                            intent.putExtra("username",view.etLoginUser.text.toString())
                             startActivity(intent)
                         }
                     })
@@ -98,10 +99,6 @@ class LogInFragment : Fragment() {
                 view.tvAlertMessage.text = "USUARIO NO ENCONTRADO NECESITAS REGISTRARTE"
             }
         }
-    }
-
-    private fun logInChangeFragment(){
-        //TODO: GO DIRECTLY TO EDIT DATA FRAGMENT BECAUSE WE DONT HAVE ANYTHING ELSE YET
     }
 
     private fun loadSignInFragment(view: FragmentLogInBinding){

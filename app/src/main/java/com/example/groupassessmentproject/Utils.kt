@@ -4,6 +4,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 
 class Utils {
     fun fadeInImageViewAnimationCustom(image: ImageView, duration:Long, alpha:Float){
@@ -23,6 +24,7 @@ class Utils {
         btn.animate().alpha(alpha).setDuration(duration)
     }
 
+    fun fadeOutConstrainLayout(layout:ConstraintLayout,duration:Long){ layout.animate().alpha(0f).setDuration(duration) }
     fun fadeOutImageViewAnimationCustom(image: ImageView, duration:Long){ image.animate().alpha(0f).setDuration(duration) }
     fun fadeOutEditTextAnimationCustom(editText: EditText, duration:Long){ editText.animate().alpha(0f).setDuration(duration) }
     fun fadeOutTextViewAnimationCustom(textView: TextView, duration:Long){ textView.animate().alpha(0f).setDuration(duration) }
