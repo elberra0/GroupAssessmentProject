@@ -58,7 +58,6 @@ class InfoActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-
             var puntos: Int = 0
             var apiError = false
             var errorMsg = StringBuilder()
